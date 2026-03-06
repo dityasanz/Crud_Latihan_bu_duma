@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Data Siswa</title>
+    <style>
+        :root {
+            --bg-1: #f1f5f9;
+            --bg-2: #e2e8f0;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --primary: #0ea5e9;
+            --primary-hover: #0284c7;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg, var(--bg-1), var(--bg-2));
+            color: var(--text);
+            padding: 20px;
+        }
+
+        .card {
+            width: min(760px, 100%);
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
+            padding: 24px;
+        }
+
+        h2,
+        h3 {
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--primary);
+            color: #ffffff;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background: #475569;
+        }
+
+        .btn-secondary:hover {
+            background: #334155;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger-hover);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        li {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .item-text {
+            flex: 1;
+            color: var(--text);
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .empty {
+            color: var(--muted);
+            justify-content: center;
+            text-align: center;
+        }
+
+        @media (max-width: 620px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-actions {
+                width: 100%;
+            }
+
+            .item-actions button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h2>Input Data Siswa</h2>
+
+        <div class="form-grid">
+            <input type="text" id="nama" placeholder="Masukkan nama">
+            <input type="text" id="kelas" placeholder="Masukkan kelas">
+            <input type="number" id="nilai" placeholder="Masukkan nilai">
+        </div>
+
+        <div class="actions">
+            <button type="button" id="submitBtn" onclick="simpanData()">Tambah</button>
+            <button type="button" id="cancelBtn" class="btn-secondary" onclick="batalEdit()" hidden>Batal</button>
+        </div>
+
+        <h3>Data Siswa</h3>
+        <ul id="hasil"></ul>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
